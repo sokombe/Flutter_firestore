@@ -46,3 +46,22 @@ await USERS_TRAINING_REF.doc(key).delete();
 }
 
 //----------------------------------------------------------------------------
+
+
+creatAListener(){
+USERS_TRAINING_REF.snapshots().listen((querySnapshot) {
+  querySnapshot.docChanges.forEach((change) {
+    // Do something with change
+    if( change.type==DocumentChangeType.added){
+
+    }
+    if(change.type==DocumentChangeType.modified){
+
+    }
+    if(change.type==DocumentChangeType.removed){
+
+    }
+  
+  });
+});
+}
