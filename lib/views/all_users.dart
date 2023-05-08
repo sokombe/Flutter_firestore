@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:my_firestore_flutter_app/Models/users.dart';
 import 'package:my_firestore_flutter_app/crud/crud.dart';
 import 'package:my_firestore_flutter_app/crud/tables_refs.dart';
@@ -20,7 +18,7 @@ class AllUsers extends StatelessWidget {
           stream: Collection_table_user.orderBy("name").snapshots(),
           builder: (_, snap) {
             if (snap.hasError) {
-              return Center(
+              return const Center(
                 child: Text("Erreur"),
               );
             }
@@ -53,38 +51,44 @@ class AllUsers extends StatelessWidget {
                                             children: [
                                               TextField(
                                                 controller: _updateName,
-                                                decoration: InputDecoration(
-                                                    labelText: "name",
-                                                    border: OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  40)),
-                                                    )),
-                                                style: TextStyle(
+                                                decoration:
+                                                    const InputDecoration(
+                                                        labelText: "name",
+                                                        border:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          40)),
+                                                        )),
+                                                style: const TextStyle(
                                                   fontSize: 20,
                                                 ),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 20,
                                               ),
                                               TextField(
                                                 keyboardType:
                                                     TextInputType.number,
                                                 controller: _updateAge,
-                                                decoration: InputDecoration(
-                                                    labelText: "Age",
-                                                    border: OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  40)),
-                                                    )),
-                                                style: TextStyle(
+                                                decoration:
+                                                    const InputDecoration(
+                                                        labelText: "Age",
+                                                        border:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          40)),
+                                                        )),
+                                                style: const TextStyle(
                                                   fontSize: 20,
                                                 ),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 20,
                                               ),
                                               ElevatedButton(
@@ -122,7 +126,7 @@ class AllUsers extends StatelessWidget {
                                       );
                                     });
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.edit,
                                 size: 25,
                                 color: Colors.blue,
@@ -152,7 +156,7 @@ class AllUsers extends StatelessWidget {
                                       );
                                     });
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.delete,
                                 size: 25,
                                 color: Colors.red,
@@ -164,7 +168,7 @@ class AllUsers extends StatelessWidget {
                 },
               );
             } else {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
           }),
     );
