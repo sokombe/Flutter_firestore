@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:my_firestore_flutter_app/Models/Users.dart';
+import 'package:my_firestore_flutter_app/Models/users.dart';
 import 'package:my_firestore_flutter_app/crud/crud.dart';
 
 class AddUser extends StatelessWidget {
@@ -76,6 +76,7 @@ class AddUser extends StatelessWidget {
                     final user = Users(
                         name: _controllerName.text,
                         age: int.parse(_controllerAge.text));
+                        //*************************************** */
                     addusers(user).then((value) {
                       _controllerAge.text = "";
                       _controllerName.text = "";

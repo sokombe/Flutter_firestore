@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:my_firestore_flutter_app/Models/Users.dart';
+import 'package:my_firestore_flutter_app/Models/users.dart';
 import 'package:my_firestore_flutter_app/crud/crud.dart';
 import 'package:my_firestore_flutter_app/crud/tables_refs.dart';
 
@@ -17,7 +17,7 @@ class AllUsers extends StatelessWidget {
 
     return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
-          stream: USERS_TRAINING_REF.orderBy("name").snapshots(),
+          stream: Collection_table_user.orderBy("name").snapshots(),
           builder: (_, snap) {
             if (snap.hasError) {
               return Center(
@@ -89,7 +89,9 @@ class AllUsers extends StatelessWidget {
                                               ),
                                               ElevatedButton(
                                                   onPressed: () async {
-                                                    print(allUser[i].id.toString());
+                                                    print(allUser[i]
+                                                        .id
+                                                        .toString());
                                                     //-----------------------------------------------------------------------------------------------------------------
                                                     final user = Users(
                                                         id: allUser[i].id,
@@ -102,7 +104,7 @@ class AllUsers extends StatelessWidget {
                                                       _updateAge.text = "";
                                                       _updateName.text = "";
                                                       Navigator.pop(context);
-                                                    }); 
+                                                    });
 
                                                     //----------------------------------------------------------------------------------------------------------------
                                                   },
@@ -127,8 +129,7 @@ class AllUsers extends StatelessWidget {
                               )),
                           IconButton(
                               onPressed: () {
-
-                                                  showDialog(
+                                showDialog(
                                     context: context,
                                     builder: (context) {
                                       return AlertDialog(
@@ -136,12 +137,13 @@ class AllUsers extends StatelessWidget {
                                             allUser[i].name.toString()),
                                         actions: [
                                           ElevatedButton(
-                                              onPressed: (() async{
-                             await   deleteUser(allUser[i].id.toString());
+                                              onPressed: (() async {
+                                                await deleteUser(
+                                                    allUser[i].id.toString());
                                                 Navigator.pop(context);
                                               }),
                                               child: Text("Oui")),
-                                               ElevatedButton(
+                                          ElevatedButton(
                                               onPressed: (() {
                                                 Navigator.pop(context);
                                               }),
